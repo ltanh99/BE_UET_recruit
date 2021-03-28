@@ -20,64 +20,73 @@ public class DAOStudent {
     @Column
     private String phonenumber;
     @Column
+    private String email;
+    @Column
     private String address;
     @Column
-    private String email;
+    private String avatarurl;
 
-    public void setStudentId(int studentId) {
-        this.id = studentId;
-    }
-
-    public void setStudentName(String studentName) {
-        this.name = studentName;
-    }
-
-    public void setStudentCode(int studentCode) {
-        this.code = studentCode;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getStudentId() {
+    public int getId() {
         return id;
     }
 
-    public String getStudentName() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public int getStudentCode() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCode() {
         return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public Date getBirthday() {
         return birthday;
     }
 
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     public String getPhonenumber() {
         return phonenumber;
     }
 
-    public String getAddress() {
-        return address;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAvatarurl() {
+        return avatarurl;
+    }
+
+    public void setAvatarurl(String avatarurl) {
+        this.avatarurl = avatarurl;
+    }
 }

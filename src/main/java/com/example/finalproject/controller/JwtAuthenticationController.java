@@ -3,10 +3,12 @@ package com.example.finalproject.controller;
 import java.util.Objects;
 
 import com.example.finalproject.config.JwtTokenUtil;
-import com.example.finalproject.model.JwtRequest;
-import com.example.finalproject.model.JwtResponse;
-import com.example.finalproject.model.UserDTO;
+import com.example.finalproject.dao.UserDao;
+import com.example.finalproject.model.*;
+import com.example.finalproject.model.studentDTO.DAOStudent;
+import com.example.finalproject.model.studentDTO.SearchRequest;
 import com.example.finalproject.service.JwtUserDetailsService;
+import com.example.finalproject.service.studentService.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,18 +34,27 @@ public class JwtAuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
+    private UserDao userDao;
+
+    @Autowired
     private JwtUserDetailsService userDetailsService;
+
+    @Autowired
+    private StudentService studentService;
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-
+//        DAOUser ExistUser = userDao.findByUsername(authenticationRequest.getUsername());
+//        Iterable<DAOStudent> student = studentService.SearchStudent(new SearchRequest(ExistUser.studentid));
+//        UserResponse userResponse = new UserResponse();
+//        userResponse.students = student;
+//        userResponse.token = token;
+//        return ResponseEntity.ok(userResponse);
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
-
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
