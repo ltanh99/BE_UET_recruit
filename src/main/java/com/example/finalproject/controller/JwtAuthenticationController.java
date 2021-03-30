@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.example.finalproject.FinalprojectApplication.main_token;
+
 
 @RestController
 @CrossOrigin
@@ -55,6 +57,7 @@ public class JwtAuthenticationController {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
+        main_token = token;
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
