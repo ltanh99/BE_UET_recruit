@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.util.Iterator;
 
 
 @Repository
@@ -17,5 +18,9 @@ public interface StudentDao extends CrudRepository<DAOStudent, Integer> {
     public Iterable<DAOStudent> FindByCategory(
             @Param("param") SearchRequest param
     );
+
+//    @Query(nativeQuery = true, value = "SELECT *"
+//            + "FROM student a where a.name like %:#{#param.name}% or a.code = :#{#param.code} or a.id = :#{#param.id}")
+//    public Iterator<DAOStudent> FindByStudentCode(@Param("param") String param);
 
 }
